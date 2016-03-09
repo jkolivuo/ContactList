@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Yhteystiedot</string>
+    <string name="action_settings">Hae lokitiedot</string>
+    <string name="call">Soita</string>
+    <string name="add_contact">Lisää yhteystieto</string>
+
+
+    <string name="Loading">Hetkinen...</string>
+    <string name="loading_log">Ladataan puhelulokia....</string>
+
+    <string name="phone">Puh: %1$s</string>
+    <string name="numberOfCalls">Soittokerrat: %1$s kpl</string>
+    <string name="offerLeft">Tarjous jätetty: %1$s</string>
+    <string name="last_call">Viimeisin soitto: %1$s</string>
+    <string name="offer">Tarjous tehty</string>
+
+    <string name="newfirstname">NIMI</string>
+    <string name="newphone">PUHELIN</string>
+</resources>

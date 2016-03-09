@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    style="@style/Base.TextAppearance.AppCompat.SearchResult.Subtitle"
+    android:background="#ffffff">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/phone"
+            android:layout_margin="8dip"
+            android:layout_weight="0.6"
+            style="@style/Base.TextAppearance.AppCompat.SearchResult.Subtitle"
+            android:textColor="#000000" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/num_of_contact_attemps"
+            android:layout_margin="8dip"
+            style="@style/Base.TextAppearance.AppCompat.SearchResult.Subtitle"
+            android:textColor="#000000"
+            android:layout_weight="0.5" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/offer_left"
+            android:layout_margin="8dip"
+            style="@style/Base.TextAppearance.AppCompat.SearchResult.Subtitle"
+            android:textColor="#000000"
+            android:layout_weight="0.5" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/last_contact"
+        android:layout_margin="8dip"
+        android:textColor="#000000" />
+
+</LinearLayout>
