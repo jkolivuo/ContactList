@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
                 {
                     Contacts contacts = new Contacts();
                     contacts.setId(managedCursor.getPosition());
-                    contacts.setNumber_of_calls(1);
+                    //contacts.setNumber_of_calls(1);
                     contacts.setPhone(managedCursor.getString(number));
                     if (contacts.getPhone().startsWith("+358")) {
                        String num = contacts.getPhone();
@@ -156,21 +156,21 @@ public class MainActivity extends AppCompatActivity {
                switch (dircode) {
                    case CallLog.Calls.OUTGOING_TYPE:
                        //Log.e("TAG", "Soitettu");
-                       contacts.setType_text("Soitettu");
+                       contacts.setType_text("Soitettu puhelu");
                        calledPersons.add(contacts);
                        break;
                    case CallLog.Calls.INCOMING_TYPE:
-                       contacts.setType_text("Vastattu");
+                       contacts.setType_text("Vastattu puhelu");
                        calledPersons.add(contacts);
                        break;
                    case CallLog.Calls.MISSED_TYPE:
-                       iterator.remove();
+                       contacts.setType_text("Ei vastattu");
                        break;
                }
             }
             ArrayList<Contacts> tempList;
             tempList = calledPersons;
-            getDublicates(calledPersons);
+            calledPersons = getDublicates(tempList);
 
 
             ArrayList<Contacts> list = new ArrayList<>();
@@ -185,11 +185,10 @@ public class MainActivity extends AppCompatActivity {
                 }
 
             }
-            if(compareLists(calledPersons, list)) {
-                Log.e("TAG", "Equals");
-            } else {
-                Log.e("TAG", "NO EQUALS");
+            for (Contacts cont : calledPersons) {
+                Log.e(TAG, String.valueOf(cont.getNumber_of_calls()) + "-" + String.valueOf(cont.getListOfCalls().size()));
             }
+
 
             //calledPersons = list;
             Collections.sort(calledPersons, new ListComparator());
@@ -253,8 +252,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private List<Contacts> getDublicates(List<Contacts> contactses) {
-        final List<String> phones = new ArrayList<>();
+    private ArrayList<Contacts> getDublicates(ArrayList<Contacts> contactses) {
+        final ArrayList<String> phones = new ArrayList<>();
         final ArrayList<Contacts> ctList = new ArrayList<>();
         Iterator<Contacts> it = contactses.iterator();
         while (it.hasNext()) {
@@ -276,18 +275,20 @@ public class MainActivity extends AppCompatActivity {
            ArrayList<NumberLog> numberLogs = new ArrayList<>();
             for (int i = 0; i < ctList.size(); i++) {
                 if (c.equals(ctList.get(i))) {
-                    Log.e(TAG, "Equals");
+                    //Log.e(TAG, "Equals");
                     NumberLog log = new NumberLog(ctList.get(i).getPhone(), ctList.get(i).getLast_contact_date(), ctList.get(i).getType_text(), ctList.get(i).getDuration());
-                    if (ctList.get(i).getDuration().equals("0")) {
+                    if (ctList.get(i).getType().equals(CallLog.Calls.MISSED_TYPE)) {
                         log.setAnswered(false);
                     } else {
                         log.setAnswered(true);
                     }
-                    c.number_of_calls++;
+
                     numberLogs.add(log);
                 }
             }
            c.listOfCalls = numberLogs;
+           c.number_of_calls = c.number_of_calls + numberLogs.size();
+           Log.e(TAG, String.valueOf(c.getNumber_of_calls()) + "-" + String.valueOf(c.getListOfCalls().size()));
        }
 
         return contactses;

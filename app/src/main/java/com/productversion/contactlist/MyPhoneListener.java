@@ -18,6 +18,7 @@ import android.widget.Toast;
             switch (state) {
                 case TelephonyManager.CALL_STATE_RINGING:
                     Toast.makeText(_contex.getApplicationContext(), incomingNumber + " soittaa", Toast.LENGTH_LONG).show();
+                    onCall = true;
                     break;
 
                 case TelephonyManager.CALL_STATE_OFFHOOK:
@@ -27,12 +28,7 @@ import android.widget.Toast;
 
                 case TelephonyManager.CALL_STATE_IDLE:
 
-                    if (onCall) {
-                        Intent restart = _contex.getApplicationContext().getPackageManager().getLaunchIntentForPackage(_contex.getApplicationContext().getPackageName());
-                        restart.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        _contex.getApplicationContext().startActivity(restart);
-                        onCall = false;
-                    }
+                    onCall = false;
                     break;
                 default:
                     break;

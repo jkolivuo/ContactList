@@ -66,8 +66,8 @@ public class AddContact extends AppCompatActivity implements View.OnClickListene
     public void onClick(View v) {
 
         if (v.equals(make_call)) {
-            if (!phoneNum.toString().equals("")) {
-                String uri = "tel:" + phoneNum.toString().trim();
+            if (!phoneNum.getText().toString().equals("")) {
+                String uri = "tel:" + phoneNum.getText().toString().trim();
                 Intent intent = new Intent(Intent.ACTION_CALL);
                 intent.setData(Uri.parse(uri));
                 if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
