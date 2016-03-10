@@ -33,6 +33,7 @@ public class AddContact extends AppCompatActivity implements View.OnClickListene
         getSupportActionBar().setHomeButtonEnabled(true);
         phoneNum = (EditText)findViewById(R.id.phone_text);
         make_call = (ImageButton)findViewById(R.id.make_call);
+        make_call.setOnClickListener(this);
 
     }
 
@@ -65,7 +66,7 @@ public class AddContact extends AppCompatActivity implements View.OnClickListene
     public void onClick(View v) {
 
         if (v.equals(make_call)) {
-            if (phoneNum.toString() != "") {
+            if (!phoneNum.toString().equals("")) {
                 String uri = "tel:" + phoneNum.toString().trim();
                 Intent intent = new Intent(Intent.ACTION_CALL);
                 intent.setData(Uri.parse(uri));
