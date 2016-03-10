@@ -164,6 +164,7 @@ public class MainActivity extends AppCompatActivity {
                        calledPersons.add(contacts);
                        break;
                    case CallLog.Calls.MISSED_TYPE:
+                       calledPersons.add(contacts);
                        iterator.remove();
                        break;
                }
@@ -171,6 +172,10 @@ public class MainActivity extends AppCompatActivity {
             ArrayList<Contacts> tempList;
             tempList = calledPersons;
             getDublicates(calledPersons);
+
+            for (Contacts c : calledPersons) {
+                c.number_of_calls = c.number_of_calls + c.getListOfCalls().size();
+            }
 
 
             ArrayList<Contacts> list = new ArrayList<>();
@@ -278,12 +283,12 @@ public class MainActivity extends AppCompatActivity {
                 if (c.equals(ctList.get(i))) {
                     Log.e(TAG, "Equals");
                     NumberLog log = new NumberLog(ctList.get(i).getPhone(), ctList.get(i).getLast_contact_date(), ctList.get(i).getType_text(), ctList.get(i).getDuration());
-                    if (ctList.get(i).getDuration().equals("0")) {
+                    if (ctList.get(i).getType().equals(String.valueOf(CallLog.Calls.MISSED_TYPE))) {
                         log.setAnswered(false);
                     } else {
                         log.setAnswered(true);
                     }
-                    c.number_of_calls++;
+
                     numberLogs.add(log);
                 }
             }

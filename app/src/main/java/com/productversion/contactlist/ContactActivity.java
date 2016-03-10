@@ -100,8 +100,8 @@ public class ContactActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v) {
 
         if (v.equals(call)) {
-            if (phone.toString() != "") {
-                String uri = "tel:" + phone.toString().trim();
+            if (phone.getText().toString() != "") {
+                String uri = "tel:" + phone.getText().toString().trim();
                 Intent intent = new Intent(Intent.ACTION_CALL);
                 intent.setData(Uri.parse(uri));
                 if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {

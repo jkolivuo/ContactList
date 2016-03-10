@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -66,9 +67,10 @@ public class AddContact extends AppCompatActivity implements View.OnClickListene
     public void onClick(View v) {
 
         if (v.equals(make_call)) {
-            if (!phoneNum.toString().equals("")) {
-                String uri = "tel:" + phoneNum.toString().trim();
+            if (!phoneNum.getText().toString().equals("")) {
+                String uri = "tel:" + phoneNum.getText().toString().trim();
                 Intent intent = new Intent(Intent.ACTION_CALL);
+                Log.e("TAG", phoneNum.getText().toString());
                 intent.setData(Uri.parse(uri));
                 if (ActivityCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
                     // TODO: Consider calling
