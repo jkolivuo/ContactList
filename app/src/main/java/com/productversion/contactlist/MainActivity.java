@@ -164,6 +164,7 @@ public class MainActivity extends AppCompatActivity {
                        calledPersons.add(contacts);
                        break;
                    case CallLog.Calls.MISSED_TYPE:
+                       calledPersons.add(contacts);
                        contacts.setType_text("Ei vastattu");
                        break;
                }
@@ -188,7 +189,6 @@ public class MainActivity extends AppCompatActivity {
             for (Contacts cont : calledPersons) {
                 Log.e(TAG, String.valueOf(cont.getNumber_of_calls()) + "-" + String.valueOf(cont.getListOfCalls().size()));
             }
-
 
             //calledPersons = list;
             Collections.sort(calledPersons, new ListComparator());

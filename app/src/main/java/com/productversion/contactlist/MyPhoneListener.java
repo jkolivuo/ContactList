@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
+import android.util.Log;
 import android.widget.Toast;
 
 
@@ -17,18 +18,17 @@ import android.widget.Toast;
 
             switch (state) {
                 case TelephonyManager.CALL_STATE_RINGING:
-                    Toast.makeText(_contex.getApplicationContext(), incomingNumber + " soittaa", Toast.LENGTH_LONG).show();
+                    Log.e("TAG", "Calling...");
                     onCall = true;
                     break;
 
                 case TelephonyManager.CALL_STATE_OFFHOOK:
-                    Toast.makeText(_contex.getApplicationContext(),"soitetaan...", Toast.LENGTH_LONG).show();
+                    Log.e("TAG", "Calling...");
                     onCall = true;
                     break;
 
                 case TelephonyManager.CALL_STATE_IDLE:
-
-                    onCall = false;
+                    
                     break;
                 default:
                     break;
